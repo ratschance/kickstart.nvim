@@ -856,15 +856,20 @@ require('lazy').setup({
       vim.cmd.hi 'Comment gui=none'
     end,
   },
+  {
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    priority = 1000,
+    init = function()
+      vim.cmd.colorscheme 'catppuccin'
+      vim.opt.background = 'dark'
+    end,
+  },
 
   {
     'lifepillar/vim-solarized8',
     branch = 'neovim',
     priority = 1000,
-    init = function()
-      vim.cmd.colorscheme 'solarized8_flat'
-      vim.opt.background = 'dark'
-    end,
   },
 
   -- Highlight todo, notes, etc in comments
