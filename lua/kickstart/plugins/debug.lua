@@ -29,6 +29,10 @@ return {
     {
       '<F5>',
       function()
+        -- (Re-)reads launch.json if present
+        if vim.fn.filereadable '.vscode/launch.json' then
+          require('dap.ext.vscode').load_launchjs(nil, {})
+        end
         require('dap').continue()
       end,
       desc = 'Debug: Start/Continue',
