@@ -6,7 +6,9 @@ return {
   version = '*',
   config = function()
     require('toggleterm').setup {
+      size = 30,
       open_mapping = [[<C-\>]],
+      persist_mode = false, -- I'm not a fan when this opens in normal mode
     }
     local term = require('toggleterm.terminal').Terminal
     local lg = term:new {
