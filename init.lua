@@ -417,7 +417,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
       vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
-      vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Search Files' })
+      vim.keymap.set('n', '<leader>,', builtin.find_files, { desc = 'Search Files' })
       vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
       vim.keymap.set({ 'n', 'v' }, '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
       vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
@@ -624,12 +624,12 @@ require('lazy').setup({
             [vim.diagnostic.severity.HINT] = '󰌶 ',
           },
         } or {},
-        -- virtual_text = {
-        --   source = 'if_many',
-        --   spacing = 2,
-        -- },
+        virtual_text = {
+          source = 'if_many',
+          spacing = 2,
+        },
         -- Display multiline diagnostics as virtual lines
-        virtual_lines = true,
+        --virtual_lines = true,
       }
 
       -- LSP servers and clients are able to communicate to each other what features they support.
@@ -738,12 +738,17 @@ require('lazy').setup({
               },
             },
           },
+          tofu_ls = {
+            filetypes = { 'terraform', 'terraform-vars' },
+          },
+          tilt = {
+            filetypes = { 'Tiltfile' },
+          },
         },
         -- This table contains config for all language servers that are *not* installed via Mason.
         -- Structure is identical to the mason table from above.
         others = {
           -- dartls = {}
-          tilt = {},
         },
       }
 
@@ -764,6 +769,7 @@ require('lazy').setup({
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
         'yaml-language-server',
+        'tofu-ls',
         'shellcheck',
       })
 
