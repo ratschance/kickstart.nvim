@@ -743,7 +743,7 @@ require('lazy').setup({
             filetypes = { 'terraform', 'terraform-vars' },
           },
           tilt = {
-            filetypes = { 'Tiltfile' },
+            filetypes = { 'Tiltfile', 'tiltfile' },
           },
         },
         -- This table contains config for all language servers that are *not* installed via Mason.
