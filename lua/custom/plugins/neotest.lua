@@ -1,28 +1,16 @@
-return {
-  {
-    'nvim-neotest/neotest',
-    dependencies = {
-      'nvim-neotest/nvim-nio',
-      'nvim-lua/plenary.nvim',
-      'antoinemadec/FixCursorHold.nvim',
-      {
-        'nvim-treesitter/nvim-treesitter', -- Optional, but recommended
-        -- branch = 'main',
-      },
-      {
-        'fredrikaverpil/neotest-golang',
-        version = 'v2.6.0', -- Optional, but recommended; track releases
-      },
-    },
-    config = function()
-      local config = {
-        runner = 'gotestsum', -- Optional, but recommended
-      }
-      require('neotest').setup {
-        adapters = {
-          require 'neotest-golang'(config),
-        },
-      }
-    end,
+vim.pack.add {
+  'https://github.com/nvim-neotest/neotest',
+  'https://github.com/nvim-neotest/nvim-nio',
+  'https://github.com/nvim-lua/plenary.nvim',
+  'https://github.com/antoinemadec/FixCursorHold.nvim',
+  { src = 'https://github.com/fredrikaverpil/neotest-golang', version = 'v2.6.0' },
+}
+
+local config = {
+  runner = 'gotestsum',
+}
+require('neotest').setup {
+  adapters = {
+    require 'neotest-golang'(config),
   },
 }

@@ -1,14 +1,20 @@
-return {
-  {
-    -- Pure Lua in-buffer markdown enhancement (renders headers, tables, callouts, and bullets)
-    'MeanderingProgrammer/render-markdown.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' },
-    ft = { 'markdown', 'markdown.mdx' },
-    opts = {
-      heading = {
-        sign = false,
-        icons = { '󰲡 ', '󰲣 ', '󰲥 ', '󰲧 ', '󰲩 ', '󰲫 ' },
-      },
-    },
+vim.pack.add {
+  'https://github.com/MeanderingProgrammer/render-markdown.nvim',
+}
+
+require('render-markdown').setup {
+  heading = {
+    icons = {},
+    sign = true,
+    width = 'full',
+  },
+  code = {
+    border = 'none',
+    conceal_delimiters = false,
+    style = 'full',
+    width = 'block',
+  },
+  bullet = {
+    icons = {},
   },
 }
