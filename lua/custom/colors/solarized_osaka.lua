@@ -1,17 +1,13 @@
-return {
-  'craftzdog/solarized-osaka.nvim',
-  lazy = false,
-  priority = 1000,
-  opts = {
-    on_highlights = function(hl, c)
-      hl.LspInlayHint = {
-        bg = c.bg_highlight, -- Solarized base02 (subtle background highlight)
-        fg = c.fg_gutter,    -- Very muted foreground, fits perfectly with the scheme
-      }
-    end,
-  },
-  init = function()
-    vim.cmd.colorscheme 'solarized-osaka'
-    vim.opt.background = 'dark'
+vim.pack.add { 'https://github.com/craftzdog/solarized-osaka.nvim' }
+
+require('solarized-osaka').setup {
+  on_highlights = function(hl, c)
+    hl.LspInlayHint = {
+      bg = c.bg_highlight,
+      fg = c.fg_gutter,
+    }
   end,
 }
+
+vim.cmd.colorscheme 'solarized-osaka'
+vim.opt.background = 'dark'
