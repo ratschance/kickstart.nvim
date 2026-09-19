@@ -45,7 +45,24 @@ Snacks.setup {
           }, cmd)
         end, cmds)
       end,
-      { section = 'startup' },
+      function()
+        local plugins = vim.pack.get()
+        local loaded = 0
+        for _, p in ipairs(plugins) do
+          if p.active then loaded = loaded + 1 end
+        end
+        local ms = vim.g.start_time and (math.floor((vim.uv.hrtime() - vim.g.start_time) / 1e4) / 100)
+        return {
+          align = 'center',
+          text = {
+            { 'Neovim loaded ', hl = 'footer' },
+            { loaded .. '/' .. #plugins, hl = 'special' },
+            { ' plugins', hl = 'footer' },
+            ms and { ' in ', hl = 'footer' } or '',
+            ms and { ms .. 'ms', hl = 'special' } or '',
+          },
+        }
+      end,
     },
   },
   notifier = { enabled = true },

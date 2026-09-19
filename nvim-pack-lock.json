@@ -134,8 +134,7 @@
     },
     "vim-solarized8": {
       "rev": "1d05915cc9050ce1a8a6b94d8c2e48ead197c756",
-      "src": "https://github.com/lifepillar/vim-solarized8",
-      "version": "'neovim'"
+      "src": "https://github.com/lifepillar/vim-solarized8"
     },
     "vim-tmux-navigator": {
       "rev": "e41c431a0c7b7388ae7ba341f01a0d217eb3a432",

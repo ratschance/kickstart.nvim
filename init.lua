@@ -91,6 +91,7 @@ P.S. You can delete this when you're done too. It's your config now! :)
 do
   -- Enable faster startup by caching compiled Lua modules
   vim.loader.enable()
+  vim.g.start_time = vim.uv.hrtime()
 
   -- Set <space> as the leader key
   -- See `:help mapleader`
@@ -420,17 +421,14 @@ do
   -- change the command under that to load whatever the name of that colorscheme is.
   --
   -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-  vim.pack.add { gh 'craftzdog/solarized-osaka.nvim' }
-  require('solarized-osaka').setup {
-    on_highlights = function(hl, c)
-      hl.LspInlayHint = {
-        bg = c.bg_highlight,
-        fg = c.fg_gutter,
-      }
-    end,
-  }
-  vim.cmd.colorscheme 'solarized-osaka'
-  vim.opt.background = 'dark'
+  -- Load your active colorscheme from lua/custom/colors/
+  -- Swap here, or set NVIM_THEME env var (e.g. on your work PC): export NVIM_THEME=tokyonight
+  local theme = vim.env.NVIM_THEME or 'solarized_osaka'
+  local ok, err = pcall(require, 'custom.colors.' .. theme)
+  if not ok then
+    vim.notify('Failed to load theme "' .. theme .. '": ' .. tostring(err), vim.log.levels.WARN)
+    require 'custom.colors.solarized_osaka'
+  end
 
   -- Highlight todo, notes, etc in comments
   vim.pack.add { gh 'folke/todo-comments.nvim' }
