@@ -51,6 +51,8 @@
 `:bn` / `:bp` - next/previous buffer
 `:bd` - delete the current buffer
 `Ctrl+^` - switch to the alternate buffer
+`Ctrl+\` - toggle the Snacks terminal (Normal or terminal mode)
+`Ctrl+H` / `Ctrl+J` / `Ctrl+K` / `Ctrl+L` - navigate Neovim windows and tmux panes
 
 ## Neovim and LSP
 `[g` / `]g` - previous/next diagnostic
